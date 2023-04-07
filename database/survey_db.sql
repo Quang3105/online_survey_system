@@ -62,7 +62,7 @@ INSERT INTO `khao_sat` (id, ten_khao_sat, loai_khao_sat, doi_tuong_tham_gia, nga
 
 CREATE TABLE `cau_hoi` (
     `id` int(10) NOT NULL,
-    `noi_dung` varchar(50) NOT NULL,
+    `noi_dung` varchar(500) NOT NULL,
     `lua_chon` varchar(500) NOT NULL,
     `loai_cau_hoi` nvarchar(50) NOT NULL,
     `thu_tu` int(11) NOT NULL DEFAULT 0,
