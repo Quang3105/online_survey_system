@@ -1,15 +1,15 @@
 CREATE TABLE `nguoi_dung` (
     `id` int NOT NULL,
-    `email` nvarchar(200) NOT NULL,
-    `mat_khau` text NOT NULL,
-    `ten` nvarchar(100) NOT NULL,
+    `email` varchar NOT NULL,
+    `mat_khau` varchar NOT NULL,
+    `ten` varchar(100) NOT NULL,
     `gioi_tinh` tinyint(1) COMMENT '0 = Nữ, 1 = Nam',
-    `dia_chi` text NOT NULL,
+    `dia_chi` varchar NOT NULL,
     `chuc_vu` tinyint(1) NOT NULL DEFAULT 3 COMMENT '1=Admin,2 = GV, 3= SV, 4 = DN',
     `so_dt` numeric NOT NULL,
-    `khoa` nvarchar(20),
-    `lop` nvarchar(50),
-    `nam` nvarchar(20)
+    `khoa` varchar,
+    `lop` varchar,
+    `nam` varchar
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -20,8 +20,8 @@ INSERT INTO `nguoi_dung` (id, email, mat_khau, ten, gioi_tinh, dia_chi, chuc_vu,
 (4, 'lmq@lmq.com', '3cc93e9a6741d8b40460457139cf8ced', 'Le', 0, 'Thuy Loi', 3, 453455, 'CNTT', '61TH3', '2020-2024');
 
 CREATE TABLE `mon_hoc` (
-                              `id` int NOT NULL,
-                              `ten_mon_hoc` varchar(20) NOT NULL
+                              `id` int(10) NOT NULL,
+                              `ten_mon_hoc` varchar NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `mon_hoc` (id, ten_mon_hoc) VALUES
@@ -31,9 +31,9 @@ INSERT INTO `mon_hoc` (id, ten_mon_hoc) VALUES
 (4, 'Triết học');
 
 CREATE TABLE `diem` (
-    `id_nguoidung` int NOT NULL,
-    `id_monhoc` int NOT NULL,
-    `diem` varchar(1)
+    `id_nguoidung` int(10) NOT NULL,
+    `id_monhoc` int(10) NOT NULL,
+    `diem` varchar(50)
 );
 
 INSERT INTO `diem` (id_nguoidung, id_monhoc, diem) VALUES
@@ -46,11 +46,11 @@ CREATE TABLE `khao_sat` (
    `id` int NOT NULL,
    `ten_khao_sat` nvarchar(50) NOT NULL,
    `loai_khao_sat` int(1) NOT NULL,
-   `doi_tuong_tham_gia` nvarchar(10) NOT NULL,
+   `doi_tuong_tham_gia` varchar NOT NULL,
    `ngay_bat_dau` date NOT NULL,
    `ngay_ket_thuc` date NOT NULL,
    `ngay_tao` datetime NOT NULL DEFAULT current_timestamp(),
-   `chi_tiet` varchar(100)
+   `chi_tiet` varchar
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `khao_sat` (id, ten_khao_sat, loai_khao_sat, doi_tuong_tham_gia, ngay_bat_dau, ngay_ket_thuc, ngay_tao, chi_tiet) VALUES
@@ -61,12 +61,12 @@ INSERT INTO `khao_sat` (id, ten_khao_sat, loai_khao_sat, doi_tuong_tham_gia, nga
 (5, 'Survey 101', 7, '2, 3, 4', '2023-03-10', '2024-03-30', '2023-03-10 14:14:29', null);
 
 CREATE TABLE `cau_hoi` (
-    `id` int NOT NULL,
-    `noi_dung` nvarchar(50) NOT NULL,
-    `lua_chon` nvarchar(500) NOT NULL,
+    `id` int(10) NOT NULL,
+    `noi_dung` varchar(50) NOT NULL,
+    `lua_chon` varchar(500) NOT NULL,
     `loai_cau_hoi` nvarchar(50) NOT NULL,
     `thu_tu` int(11) NOT NULL DEFAULT 0,
-    `id_khaosat` int NOT NULL,
+    `id_khaosat` int(10) NOT NULL,
     `ngay_tao` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -77,10 +77,10 @@ INSERT INTO `cau_hoi` (id, noi_dung, lua_chon, loai_cau_hoi, thu_tu, id_khaosat,
 
 
 CREATE TABLE `cau_tra_loi` (
-  `id` int NOT NULL,
-  `id_khaosat` int(30) NOT NULL,
-  `id_nguoidung` int(30) NOT NULL,
-  `noi_dung` text NOT NULL,
+  `id` int(10) NOT NULL,
+  `id_khaosat` int(10) NOT NULL,
+  `id_nguoidung` int(10) NOT NULL,
+  `noi_dung` varchar NOT NULL,
   `id_cauhoi` int(30) NOT NULL,
   `ngay_tao` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
