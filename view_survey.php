@@ -13,7 +13,7 @@ $answers = $conn->query("SELECT distinct(id_nguoidung) from cau_tra_loi where id
 		<div class="col-md-4">
 			<div class="card card-outline card-primary">
 				<div class="card-header">
-					<h3 class="card-title">Chi Tiết khảo sát</h3>
+					<h3 class="card-title">Chi tiết khảo sát</h3>
 				</div>
 				<div class="card-body p-0 py-2">
 					<div class="container-fluid">

@@ -5,8 +5,8 @@
           <span class="brand-text font-weight-light"><?php echo ucwords($_SESSION['login_ten']) ?></span>
       </a>
         <div class="dropdown-menu" style="">
-          <a class="dropdown-item manage_account" href="javascript:void(0)" data-id="<?php echo $_SESSION['login_id'] ?>">Xem Thông Tin Cá Nhân</a>
-          <a class="dropdown-item manage_password" href="javascript:void(0)"data-id="<?php echo $_SESSION['login_id'] ?>">Thay Đổi Mật Khẩu</a>
+          <a class="dropdown-item manage_account" href="javascript:void(0)" data-id="<?php echo $_SESSION['login_id'] ?>">Xem thông tin cá nhân</a>
+          <a class="dropdown-item manage_password" href="javascript:void(0)"data-id="<?php echo $_SESSION['login_id'] ?>">Thay đổi mật khẩu</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="ajax.php?action=logout">Đăng xuất</a>
       </div>
@@ -140,10 +140,10 @@
         }
   		}
       $('.manage_account').click(function(){
-        uni_modal('Quản Lý Thông Tin Cá Nhân','manage_user.php?id='+$(this).attr('data-id'))
+        uni_modal('Quản lý thông tin cá nhân','manage_user.php?id='+$(this).attr('data-id'))
       })
       $('.manage_password').click(function(){
-        uni_modal('Thay Đổi Mật Khẩu','manage_password.php?id='+$(this).attr('data-id'))
+        uni_modal('Thay đổi mật khẩu','manage_password.php?id='+$(this).attr('data-id'))
       })
   	})
   </script>

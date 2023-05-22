@@ -3,8 +3,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php 
   ob_start();
-  $pageList = ['home','user_list','alumni_list','lecturers_list','enterprise_list', 'new_user','edit_user', 'survey_list','new_survey', 'edit_survey', 'view_survey', 'survey_report', 'view_survey_report','survey_widget','survey_history','view_survey_history'];
-  $pageListVN = ['Trang chủ','Danh sách Sinh Viên','Danh sách Cựu Sinh Viên','Danh sách Giảng Viên','Danh sách Doanh Ngiệp', 'Người dùng mới', 'Sửa thông tin người dùng', 'Danh sách khảo sát', 'Khảo sát mới', 'Sửa thông tin khảo sát', 'Xem thông tin khảo sát', 'Thống kê', 'Xem thông tin thống kê','Danh Sách Khảo Sát','Lịch Sử Khảo Sát','Chi Tiết Lịch Sử Khảo Sát'];
+  $pageList = ['home','user_list','alumni_list','lecturers_list','enterprise_list', 'new_user','edit_user', 'survey_list','new_survey', 'edit_survey', 'view_survey', 'survey_report', 'view_survey_report','survey_widget','survey_history','view_survey_history','answer_survey','new_enterprise'];
+  $pageListVN = ['Trang chủ','Danh sách Sinh Viên','Danh sách Cựu Sinh Viên','Danh sách Giảng Viên','Danh sách Doanh Nghiệp', 'Người dùng mới', 'Sửa thông tin người dùng', 'Danh sách khảo sát', 'Khảo sát mới', 'Sửa thông tin khảo sát', 'Xem thông tin khảo sát', 'Thống kê', 'Xem thông tin thống kê','Danh sách khảo sát','Lịch sử khảo sát','Lịch sử khảo sát','Danh sách khảo sát','Người dùng mới'];
   $title = isset($_GET['page']) ? $pageListVN[array_search($_GET['page'], $pageList)] : "Trang Chủ";
   setlocale(LC_ALL, "vit");
   ?>

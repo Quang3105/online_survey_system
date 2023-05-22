@@ -15,8 +15,8 @@
                     <th>Số điện thoại</th>
                     <th>Loại tài khoản</th>
                     <th>Email</th>
-                    <th>Giới Tính</th>
-                    <th>Địa Chỉ</th>
+                    <th>Giới tính</th>
+                    <th>Địa chỉ</th>
                     <th>Trạng thái</th>
                 </tr>
                 </thead>
@@ -73,7 +73,7 @@
             data:{id:$id},
             success:function(resp){
                 if(resp==1){
-                    alert_toast("Xoá tài khoản thành công",'success')
+                    alert_toast("Xoá người dùng thành công",'success')
                     setTimeout(function(){
                         location.reload()
                     },1500)

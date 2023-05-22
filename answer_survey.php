@@ -111,7 +111,7 @@
 					<?php endwhile; ?>
 				</div>
                 <div class="col-lg-12 text-right justify-content-center d-flex">
-					<button class="btn btn-primary mr-2">Lưu</button>
+					<button class="btn btn-primary mr-2">Gửi khảo sát</button>
 				</div>
 				</form>
 			</div>
@@ -137,7 +137,7 @@
 		    type: 'POST',
 			success:function(resp){
 				if(resp == 1){
-					alert_toast('Đã lưu dữ liệu thành công.',"success");
+					alert_toast('Gửi khảo sát thành công',"success");
 					setTimeout(function(){
 						location.replace('index.php?page=survey_widget')
 					},1500)

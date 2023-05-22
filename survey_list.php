@@ -23,7 +23,7 @@
 						<th>Loại khảo sát</th>
 						<th>Ngày bắt đầu</th>
 						<th>Ngày kết thúc</th>
-						<th>Lựa chọn</th>
+						<th>Trạng thái</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -67,7 +67,7 @@
 <script>
 	$(document).ready(function(){
 	$('.delete_survey').click(function(){
-	_conf("Bạn có chắc chắn xóa khảo sát này không?","delete_survey",[$(this).attr('data-id')])
+	_conf("Có chắc chắn xóa khảo sát này không?","delete_survey",[$(this).attr('data-id')])
 	})
 	})
 	function delete_survey($id){
@@ -78,7 +78,7 @@
 			data:{id:$id},
 			success:function(resp){
 				if(resp==1){
-					alert_toast("Đã xóa khảo sát thành công",'success')
+					alert_toast("Xóa khảo sát thành công",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)

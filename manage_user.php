@@ -20,7 +20,7 @@ foreach($user->fetch_array() as $k =>$v){
 					<input type="text" name="ten" id="ten" class="form-control" value="<?php echo $meta['ten'] ?>" required>
 				</div>
 				<div class="form-group">
-					<label for="name" class="control-label">Số Điện Thoại</label>
+					<label for="name" class="control-label">Số điện thoại</label>
 					<input type="text" name="so_dt" id="so_dt" class="form-control" value="<?php echo $meta['so_dt'] ?>" required>
 				</div>
 				<div class="form-group">
@@ -28,14 +28,14 @@ foreach($user->fetch_array() as $k =>$v){
 					<input type="text" name="email" id="email" class="form-control" value="<?php echo isset($meta['email']) ? $meta['email']: '' ?>" required  autocomplete="off">
 				</div>
 				<div class="form-group">
-                            <label for="" class="control-label">Giới Tính</label>
+                            <label for="" class="control-label">Giới tính</label>
                             <select type="type" name="gioi_tinh" class="custom-select custom-select-sm">
                                 <option value="1" <?php echo isset($meta['gioi_tinh']) && $meta['gioi_tinh'] == 1 ? 'selected' : '' ?>>Nam</option>
                                 <option value="0" <?php echo isset($meta['gioi_tinh']) && $meta['gioi_tinh'] == 0 ? 'selected' : '' ?>>Nữ</option>
                             </select>
                  </div>
                 <div class="form-group">
-                    <label for="name" class="control-label">Địa Chỉ</label>
+                    <label for="name" class="control-label">Địa chỉ</label>
                     <input type="text" name="dia_chi" id="dia_chi" class="form-control" value="<?php echo $meta['dia_chi'] ?>" required>
                 </div>
 			</div>
@@ -53,7 +53,7 @@ foreach($user->fetch_array() as $k =>$v){
                     <input type="text" name="nam" id="nam" class="form-control" value="<?php echo $meta['nam'] ?>" required>
                 </div>
 				<div class="form-group">
-					<label for="name" class="control-label">Chức Vụ</label>
+					<label for="name" class="control-label">Chức vụ</label>
 					<input type="text" name="chucVu" id="chucVu" disabled="disabled" class="form-control" value="<?php if (isset($meta['chuc_vu'])) {
 					        if ($meta['chuc_vu'] == 1) echo 'Admin';
                             if ($meta['chuc_vu'] == 2) echo 'Giảng Viên';
@@ -64,6 +64,10 @@ foreach($user->fetch_array() as $k =>$v){
 				</div>
 			</div>
 		</div>
+		<div class="modal-footer" style="margin-top:16px">
+                    <button type="button" class="btn btn-primary" style="width: 100px;margin-right: 22px;" id='submit' onclick="$('#uni_modal form').submit()">Lưu</button>
+                    <button type="button" class="btn btn-secondary" style="width: 100px;margin-right: 35px;" data-dismiss="modal">Hủy bỏ</button>
+        </div>
 	</form>
 </div>
 <script>

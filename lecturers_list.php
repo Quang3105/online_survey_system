@@ -15,11 +15,11 @@
                     <th>Số điện thoại</th>
                     <th>Loại tài khoản</th>
                     <th>Email</th>
-                    <th>Giới Tính</th>
+                    <th>Giới tính</th>
                     <th>Khoa</th>
                     <th>Lớp</th>
                     <th>Năm</th>
-                    <th>Địa Chỉ</th>
+                    <th>Địa chỉ</th>
                     <th>Trạng thái</th>
                 </tr>
                 </thead>
@@ -68,7 +68,7 @@
             uni_modal("<i class='fa fa-id-card'></i> Chi tiết người dùng","view_user.php?id="+$(this).attr('data-id'))
         })
         $('.delete_user').click(function(){
-            _conf("Có chắc chắn xóa người dùng này không?","delete_user",[$(this).attr('data-id')])
+            _conf("Có chắc xóa người dùng này không?","delete_user",[$(this).attr('data-id')])
         })
     })
     function delete_user($id){
@@ -79,7 +79,7 @@
             data:{id:$id},
             success:function(resp){
                 if(resp==1){
-                    alert_toast("Xoá tài khoản thành công",'success')
+                    alert_toast("Xoá người dùng thành công",'success')
                     setTimeout(function(){
                         location.reload()
                     },1500)

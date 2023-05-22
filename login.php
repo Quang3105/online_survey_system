@@ -1,6 +1,8 @@
 <?php 
 session_start();
 include('./db_connect.php');
+if (isset($_SESSION['login_id'])) 
+    header('Location: index.php?page=home')
 ?>
 <head>
   <meta charset="utf-8">
@@ -145,11 +147,11 @@ label {
 					location.href ='index.php?page=home';
 				}else{
                     if (document.getElementById('email').value == '' || document.getElementById('password').value == '') {
-                        $('#login-form').append('<div class="alert alert-danger" style = "top:20px">Vui lòng nhập đầy đủ thông tin</div>');
+                        $('#login-form').append('<div class="alert alert-danger" style = "top:20px">Vui lòng điền đầy đủ thông tin</div>');
                         $('#login-form button[type="button"]').removeAttr('disabled').html('Login');
                     }
                     else {
-                        $('#login-form').append('<div class="alert alert-danger" style = "top:20px">Tên đăng nhập hoặc tài khoản của bạn không chính xác.</div>')
+                        $('#login-form').append('<div class="alert alert-danger" style = "top:20px">Tên đăng nhập hoặc mật khẩu không chính xác</div>')
                         $('#login-form button[type="button"]').removeAttr('disabled').html('Login');
                     }
 				}

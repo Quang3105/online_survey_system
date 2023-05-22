@@ -16,7 +16,7 @@ foreach($qry as $k => $v){
 						<input type="hidden" name="sid" value="<?php echo isset($_GET['sid']) ? $_GET['sid'] : '' ?>">
 						<div class="form-group">
 							<label for="" class="control-label">Câu hỏi</label>
-							<textarea name="question" id="" cols="30" rows="4" class="form-control" required><?php echo isset($noi_dung)? $noi_dung: '' ?></textarea>
+							<textarea name="question" id="" cols="30" rows="4" pattern="[A-Za-z0-9]" class="form-control" required><?php isset($noi_dung)? $noi_dung: '' ?></textarea>
 						</div>
 						<div class="form-group">
 							<label for="" class="control-label">Loại câu hỏi câu trả lời</label>
@@ -24,12 +24,11 @@ foreach($qry as $k => $v){
 								<?php if(isset($id)): ?>
 								<option value="" disabled="" selected="">Vui lòng chọn ở đây</option>
 								<?php endif; ?>
-								<option value="radio_opt" <?php echo isset($loai_cau_hoi) && $loai_cau_hoi == 'radio_opt' ? 'selected':'' ?>>Trả lời đơn/Radio button</option>
-								<option value="check_opt" <?php echo isset($loai_cau_hoi) && $loai_cau_hoi == 'check_opt' ? 'selected':'' ?>>Nhiều câu trả lời/Check boxs</option>
-								<option value="textfield_s" <?php echo isset($loai_cau_hoi) && $loai_cau_hoi == 'textfield_s' ? 'selected':'' ?>>Văn bản/Text area</option>
+								<option value="radio_opt" <?php echo isset($loai_cau_hoi) && $loai_cau_hoi == 'radio_opt' ? 'selected':'' ?>>Chọn Một Đáp Án</option>
+								<option value="check_opt" <?php echo isset($loai_cau_hoi) && $loai_cau_hoi == 'check_opt' ? 'selected':'' ?>>Chọn Nhiều Đáp Án</option>
+								<option value="textfield_s" <?php echo isset($loai_cau_hoi) && $loai_cau_hoi == 'textfield_s' ? 'selected':'' ?>>Nhập Câu Trả Lời</option>
 							</select>
 						</div>
-						
 				</div>
 				<div class="col-sm-6">
 					<b>Xem trước</b>
@@ -73,7 +72,7 @@ foreach($qry as $k => $v){
 								      	</td>
 
 								      	<td class="text-center">
-								      		<input type="text" class="form-control form-control-sm check_inp"  name="label[]" value="<?php echo $v ?>">
+								      		<input type="text" class="form-control form-control-sm check_inp"  name="label[]" value="<?php echo $v ?>" required>
 								      	</td>
 								      	<td class="text-center"></td>
 							     	</tr>
@@ -97,6 +96,10 @@ foreach($qry as $k => $v){
 				</div>
 			</div>
 		</div>
+    	 <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Lưu</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+          </div>
 	</form>
 </div>
 <div id="check_opt_clone"  style="display: none">
@@ -128,7 +131,7 @@ foreach($qry as $k => $v){
 		      	</td>
 
 		      	<td class="text-center">
-		      		<input type="text" class="form-control form-control-sm check_inp" name="label[]" required>
+		      		<input type="text" class="form-control form-control-sm check_inp" name="label[]" required />
 		      	</td>
 		      	<td class="text-center"></td>
 	     	</tr>
@@ -142,7 +145,7 @@ foreach($qry as $k => $v){
 		      	</td>
 
 		      	<td class="text-center">
-		      		<input type="text" class="form-control form-control-sm check_inp" name="label[]" required>
+		      		<input type="text" class="form-control form-control-sm check_inp" name="label[]" required />
 		      	</td>
 		      	<td class="text-center"></td>
 	     	</tr>
@@ -262,6 +265,20 @@ foreach($qry as $k => $v){
 	$('#manage-question').submit(function(e){
 		e.preventDefault()
 		start_load()
+		if ($('[name="question"]').val() == "") {
+		    $('[name="question"]').addClass("border-danger")
+		    end_load();
+		    return false;
+		}
+        var tbody = document.querySelector("tbody");
+        var label = tbody.querySelectorAll("input[name='label[]']");
+		for (var i = 0; i < label.length; i++) {
+    		if (label[i].value == "") {
+    		    label[i].classList.add("border-danger")
+    		    end_load();
+    		    return false;
+    		}
+		}
 		// $('#msg').html('')
 		$.ajax({
 			url:'ajax.php?action=save_question',

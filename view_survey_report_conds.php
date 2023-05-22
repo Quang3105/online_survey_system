@@ -30,7 +30,7 @@ if (isset($_POST['submitButton'])) {
 }
 $answers = $conn->query("SELECT a.*,q.loai_cau_hoi".$select_qry." from cau_tra_loi a inner join cau_hoi q on q.id = a.id_cauhoi ". $from_qry ." where a.id_khaosat ={$id} " .$where_qry);
 $taken = $conn->query("SELECT distinct(id_nguoidung)".$select_qry." from cau_tra_loi a ". $from_qry ." where a.id_khaosat ={$id} ".$where_qry)->num_rows;
-//echo "<p><b>SELECT a.*,q.loai_cau_hoi $select_qry from cau_tra_loi a inner join cau_hoi q on q.id = a.id_cauhoi $from_qry where a.id_khaosat ={$id} $where_qry</b></p>";
+// echo "<p><b>SELECT a.*,q.loai_cau_hoi $select_qry from cau_tra_loi a inner join cau_hoi q on q.id = a.id_cauhoi $from_qry where a.id_khaosat ={$id} $where_qry</b></p>";
 $ans = array();
 
 while($row=$answers->fetch_assoc()){

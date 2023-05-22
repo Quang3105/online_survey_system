@@ -64,10 +64,6 @@
       </div>
       <div class="modal-body">
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Lưu</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-      </div>
       </div>
     </div>
   </div>

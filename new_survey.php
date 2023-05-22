@@ -12,17 +12,17 @@ if(!isset($conn)){
                     <div class="col-md-6 border-right">
                         <div class="form-group">
                             <label for="" class="control-label">Tên khảo sát</label>
-                            <input type="text" name="title" class="form-control form-control-sm" required
-                                value="<?php echo isset($ten_khao_sat) ? $ten_khao_sat : '' ?>">
+                            <input type="text" name="title" class="form-control form-control-sm" required requiredmsg="Vui lòng nhập đầy đủ thông tin"
+                                value="<?php echo isset($ten_khao_sat) ? $ten_khao_sat : '' ?>" pattern="[A-Za-z0-9\s]{1,}">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Ngày bắt đầu</label>
-                            <input type="date" name="start_date" class="form-control form-control-sm" required
+                            <input type="date" name="start_date" class="form-control form-control-sm" required requiredmsg="Vui lòng nhập đầy đủ thông tin"
                                 value="<?php echo isset($ngay_bat_dau) ? $ngay_bat_dau : '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Ngày kết thúc</label>
-                            <input type="date" name="end_date" class="form-control form-control-sm" required
+                            <input type="date" name="end_date" class="form-control form-control-sm" required requiredmsg="Vui lòng nhập đầy đủ thông tin"
                                 value="<?php echo isset($ngay_ket_thuc) ? $ngay_ket_thuc : '' ?>">
                         </div>
                         <div class="form-group">
@@ -55,7 +55,7 @@ if(!isset($conn)){
                         <div class="form-group form-check-box">
                             <label for="" class="control-label">Người Tham Gia Khảo Sát</label>
                             <div id="example">
-                                    <select class="" name="type_join[]" style="width: 103%;" multiple multiselect-search="true" multiselect-select-all="true" multiselect-max-items="4" required>
+                                    <select class="" name="type_join[]" style="width: 103%;" multiple multiselect-search="true" multiselect-select-all="true" multiselect-max-items="4" required requiredmsg="Vui lòng nhập đầy đủ thông tin">
                                         <option value="2"
                                             <?php if (isset($list_doi_tuong_tham_gia) && in_array(2, $list_doi_tuong_tham_gia)) echo 'selected' ?>>
                                             Giảng viên</option>
@@ -65,6 +65,9 @@ if(!isset($conn)){
                                         <option value="4"
                                             <?php if (isset($list_doi_tuong_tham_gia) && in_array(4, $list_doi_tuong_tham_gia)) echo 'selected' ?>>
                                             Doanh nghiệp</option>
+                                            <option value="55"
+                                            <?php if (isset($list_doi_tuong_tham_gia) && in_array(5, $list_doi_tuong_tham_gia)) echo 'selected' ?>>
+                                            Cựu Sinh Viên</option>
                                     </select>
                             </div>
                         </div>
@@ -121,7 +124,13 @@ $('#manage_survey').submit(function(e) {
         type: 'POST',
         success: function(resp) {
             if (resp == 1) {
-                alert_toast('Thêm lưu dữ liệu thành công.', "success");
+                alert_toast('Thêm khảo sát thành công.', "success");
+                setTimeout(function() {
+                    location.replace('index.php?page=survey_list')
+                }, 1500)
+            }
+            if (resp == 2) {
+                alert_toast('Sửa khảo sát thành công.', "success");
                 setTimeout(function() {
                     location.replace('index.php?page=survey_list')
                 }, 1500)
@@ -149,4 +158,22 @@ function showHideCode() {
     }
 }
 showHideCode() 
+</script>
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var elements = $("input, select");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oninvalid = function(e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                 e.target.setCustomValidity(e.target.getAttribute("requiredmsg"));
+            }
+        };
+        elements[i].oninput = function(e) {
+            e.target.setCustomValidity("");
+        };
+    }
+})
 </script>

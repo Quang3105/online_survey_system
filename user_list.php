@@ -15,11 +15,11 @@
                     <th>Số điện thoại</th>
                     <th>Loại tài khoản</th>
                     <th>Email</th>
-                    <th>Giới Tính</th>
+                    <th>Giới tính</th>
                     <th>Khoa</th>
                     <th>Lớp</th>
                     <th>Năm học</th>
-                    <th>Địa Chỉ</th>
+                    <th>Địa chỉ</th>
                     <th>Trạng thái</th>
                 </tr>
                 </thead>
@@ -34,7 +34,7 @@
                     <tr>
                         <th class="text-center"><?php echo $i++ ?></th>
                         <td><b><?php echo ucwords($row['ten']) ?></b></td>
-                        <td><b><?php echo $row['so_dt'] ?></b></td>
+                        <td><b><?php echo '0'.$row['so_dt'] ?></b></td>
                         <td><b><?php echo $chuc_vu[$row['chuc_vu']] ?></b></td>
                         <td><b><?php echo $row['email'] ?></b></td>
                         <td><b><?php echo $row['gioi_tinh'] == 1 ? 'Nam' : 'Nữ' ?></b></td>
@@ -79,7 +79,7 @@
             data:{id:$id},
             success:function(resp){
                 if(resp==1){
-                    alert_toast("Xoá tài khoản thành công",'success')
+                    alert_toast("Xoá người dùng thành công",'success')
                     setTimeout(function(){
                         location.reload()
                     },1500)

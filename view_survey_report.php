@@ -124,7 +124,7 @@ $taken = $conn->query("SELECT distinct(id_nguoidung) from cau_tra_loi where id_k
 							<?php if($row['loai_cau_hoi'] != 'textfield_s'):?>
 								<ul>
 							<?php foreach(json_decode($row['lua_chon']) as $k => $v):
-								$prog = ((isset($ans[$row['id'][0]][$k]) ? count($ans[$row['id'][0]][$k]) : 0) / ($taken == 0 ? 1 : $taken)) * 100;
+								$prog = ((isset($ans[$row['id']][$k]) ? count($ans[$row['id']][$k]) : 0) / ($taken == 0 ? 1 : $taken)) * 100;
 								$prog = round($prog,2);
 								?>
 								<li>
@@ -132,7 +132,7 @@ $taken = $conn->query("SELECT distinct(id_nguoidung) from cau_tra_loi where id_k
 										<b><?php echo $v ?></b>
 									</div>
 									<div class="d-flex w-100">
-									<span class=""><?php echo isset($ans[$row['id'][0]][$k]) ? count($ans[$row['id'][0]][$k]) : 0 ?>/<?php echo $taken ?></span>
+									<span class=""><?php echo isset($ans[$row['id']][$k]) ? count($ans[$row['id']][$k]) : 0 ?>/<?php echo $taken ?></span>
 									<div class="mx-1 col-sm-8"">
 									<div class="progress w-100" >
 					                  <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $prog ?>%">
@@ -147,8 +147,8 @@ $taken = $conn->query("SELECT distinct(id_nguoidung) from cau_tra_loi where id_k
 								</ul>
 						<?php else: ?>
 							<div class="d-block tfield-area w-100 bg-dark">
-								<?php if(isset($ans[$row['id'][0]])): ?>
-								<?php foreach($ans[$row['id'][0]] as $val): ?>
+								<?php if(isset($ans[$row['id']])): ?>
+								<?php foreach($ans[$row['id']] as $val): ?>
 								<blockquote class="text-dark"><?php echo $val ?></blockquote>
 								<?php endforeach; ?>
 								<?php endif; ?>

@@ -24,12 +24,19 @@ if($action == 'logout'){
 
 if($action == 'update_password'){
 	$uPass = $crud->doiMatKhau();
-	if($uPass)
+	if($uPass) {
 		echo $uPass;
+	}
 }
 
 if($action == 'save_user'){
 	extract($_POST);
+	if (strlen($_POST['password']) > 0) {
+      if(strlen($_POST['password']) > 20 || strlen($_POST['password']) < 8  || str_contains($_POST['password'], ' ')){
+          echo 3;
+          return;
+      }
+    }
 	$save_user = new User();
 	$save_user -> createUser($_POST['id'], $_POST['email'], $_POST['password'], $_POST['ten'], $_POST['diaChi'], $_POST['soDT'], $_POST['chuc_vu'], $_POST['gioiTinh'], $_POST['khoa'], $_POST['lop'], $_POST['nam']);
 	$res = $crud -> themTaiKhoan($save_user);
@@ -40,8 +47,9 @@ if($action == 'save_user'){
 
 if($action == 'update_user'){
 	$update = $crud->suaTaiKhoan();
-	if($update)
+	if($update) {
 		echo $update;
+	}
 }
 
 if ($action == 'delete_user') {

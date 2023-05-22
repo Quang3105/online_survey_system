@@ -18,7 +18,7 @@ while($row=$answers->fetch_assoc()){
 		  <button type="button" id = "date_search" onclick="myFunction()" style="border-radius: 0rem 0.2rem 0.2rem 0rem;" class="button_search"><i class="far fa-calendar"></i> Tìm kiếm bằng ngày bắt đầu</button>
         </div>
 	</div>
-	<div class=" w-100" id='ns' style="display: none"><center><b style="color: red">Không có kết quả</b></center></div>
+	<div class=" w-100" id='ns' style="display: none"><center><b">Không tìm thấy kết quả nào!</b></center></div>
 	<div class="row">
 		<?php 
 		$chucvu = $_SESSION['login_chuc_vu'];
@@ -54,7 +54,7 @@ while($row=$answers->fetch_assoc()){
                	<hr class="border-primary">
                	<div class="d-flex justify-content-center w-100 text-center">
                		<?php if(!isset($ans[$row['id']])): ?>
-               			<a href="index.php?page=answer_survey&id=<?php echo $row['id'] ?>" class="btn btn-sm bg-gradient-primary" style="margin-top: 10px"><i class="fa fa-pen-square"></i>  Đi khảo sát</a>
+               			<a href="index.php?page=answer_survey&id=<?php echo $row['id'] ?>" class="btn btn-sm bg-gradient-primary" style="margin-top: 10px"><i class="fa fa-pen-square"></i>  Tham gia khảo sát</a>
                		<?php else: ?>
                			<p class="text-primary border-top border-primary text-KS">Hoàn thành</p>
                		<?php endif; ?>
