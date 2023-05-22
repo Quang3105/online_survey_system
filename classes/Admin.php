@@ -23,14 +23,17 @@ Class Admin extends User {
         }
         if(empty($user->getId())){
             $save = $this->db->query("INSERT INTO nguoi_dung set $data");
+            $res = 1;
         }else{
             $save = $this->db->query("UPDATE nguoi_dung set $data where id = ".$user->getId());
+            $res = 0; 
         }
 
         if($save) {
-            return 1;
+            //echo $data;
+            return $res;
         }
-        else return 2;
+        else return 4;
     }
 
     function xoaTaiKhoan(){

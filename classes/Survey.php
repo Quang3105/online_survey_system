@@ -33,15 +33,16 @@ Class Survey {
             $save = $this->db->prepare("INSERT INTO khao_sat (ten_khao_sat, loai_khao_sat, doi_tuong_tham_gia, ngay_bat_dau, ngay_ket_thuc, chi_tiet) VALUES (?,?,?,?,?,?)");
             $save->bind_param('ssssss',$title, $type, $type_join_list, $start_date, $end_date, $detail);
             $save->execute();
-
+            $res = 1;
         }else{
             $save = $this->db->prepare("UPDATE khao_sat SET ten_khao_sat = ?, loai_khao_sat = ?, doi_tuong_tham_gia = ?, ngay_bat_dau = ?, ngay_ket_thuc = ?, chi_tiet = ? where id = ?");
             $save->bind_param('sssssss',$title, $type, $type_join_list, $start_date, $end_date, $detail, $id);
             $save->execute();
+            $res = 2;
         }
 
         if($save)
-            return 1;
+            return $res;
     }
     function xoaKhaoSat(){
         extract($_POST);

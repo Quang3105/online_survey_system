@@ -66,7 +66,9 @@ Class User
     public function createUser($id, $email, $matKhau, $ten, $diaChi, $soDT, $chucVu, $gioiTinh, $khoa, $lop, $nam) {
         $this -> setId($id);
         $this -> setEmail($email);
-        $this -> setMatKhau(md5($matKhau));
+        if (!empty($matKhau)) {
+            $this -> setMatKhau(md5($matKhau));    
+        }
         $this -> setTen($ten);
         $this -> setDiaChi($diaChi);
         $this -> setSoDT($soDT);
@@ -196,6 +198,7 @@ Class User
         extract($_POST);
         $oPassword = md5($oldPassword);
         $nPassword = md5($newPassword);
+        $rPassword = md5($cpass);
         $check = $this -> db -> query("SELECT mat_khau FROM nguoi_dung where id = $id") -> fetch_assoc();
         if ($check['mat_khau'] != $oPassword) {
             return 2;
